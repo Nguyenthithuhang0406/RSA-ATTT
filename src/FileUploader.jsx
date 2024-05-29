@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const FileUploader = ({ title, onFileChange }) => {
-  const [fileContent, setFileContent] = useState('');
 
   const handleDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];

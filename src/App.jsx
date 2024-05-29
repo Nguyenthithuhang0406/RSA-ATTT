@@ -5,6 +5,7 @@ import { RSA, ComputeMd5Hash } from './rsa';
 
 import "./App.scss"
 import FileUploader from './FileUploader';
+import SaveTextToFile from './SaveTextToFile';
 const App = () => {
   const [rsa] = useState(new RSA());
   const [textToSign, setTextToSign] = useState('');
@@ -66,7 +67,7 @@ const App = () => {
               <textarea value={signature} readOnly />
               <div className='gr-btn'>
                 <button className='btn1' onClick={convert}>Chuyển</button>
-                <button className='btn2'>Lưu</button>
+                <SaveTextToFile content={signature}/>
               </div>
             </div>
 
