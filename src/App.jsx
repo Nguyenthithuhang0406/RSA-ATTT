@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import { RSA, ComputeMd5Hash } from './rsa';
 
@@ -13,6 +13,7 @@ const App = () => {
   const [verificationText, setVerificationText] = useState('');
   const [verificationSignature, setVerificationSignature] = useState('');
   const [verificationResult, setVerificationResult] = useState('');
+  const [notification, setNotification] = useState('')
 
   const handleSign = () => {
     const hash = ComputeMd5Hash(textToSign);
@@ -22,10 +23,17 @@ const App = () => {
     setSignedText(textToSign);
   };
 
+  const convert = () => {
+    setVerificationText(textToSign);
+    setVerificationSignature(signature);
+    setVerificationResult(hashFunction);
+    
+  }
+
   const handleVerify = () => {
     const hash = ComputeMd5Hash(verificationText);
     const decryptedHash = rsa.GiaiMa(verificationSignature);
-    setVerificationResult(hash === decryptedHash ? 'Chữ ký hợp lệ' : 'Chữ ký không hợp lệ');
+    setNotification(hash === decryptedHash ? 'Chữ ký hợp lệ' : 'Chữ ký không hợp lệ');
   };
 
   return (
@@ -38,7 +46,7 @@ const App = () => {
             <div className='group'>
               <p>Văn bản ký</p>
               <textarea value={textToSign} onChange={(e) => setTextToSign(e.target.value)} />
-              <button>File</button>
+              <button >File</button>
             </div>
 
             <div className='bt-sign'>
@@ -54,7 +62,7 @@ const App = () => {
               <p>Chữ ký</p>
               <textarea value={signature} readOnly />
               <div className='gr-btn'>
-                <button className='btn1'>Chuyển</button>
+                <button className='btn1' onClick={convert}>Chuyển</button>
                 <button className='btn2'>Lưu</button>
               </div>
             </div>
@@ -82,6 +90,11 @@ const App = () => {
             <div className='gr-hashFunction'>
               <p>Hàm băm</p>
               <textarea value={verificationResult} readOnly />
+            </div>
+
+            <div className='gr-hashFunction'>
+              <p>Thông báo</p>
+              <textarea value={notification} readOnly />
             </div>
 
           </div>

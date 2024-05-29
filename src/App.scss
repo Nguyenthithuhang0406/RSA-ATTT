@@ -39,7 +39,7 @@
         textarea{
           width: 250px;
           min-height: 200px;
-          padding: 30px;
+          
         }
 
         button{
@@ -51,13 +51,13 @@
           background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,102,134,1) 0%, rgba(95,140,150,1) 100%);
           color: white;
         }
-
-        .gr-btn{
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-        }
         
+      }
+
+      .gr-btn{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
       }
 
       .bt-sign{
@@ -88,7 +88,7 @@
         textarea{
           width: 250px;
           min-height: 70px;
-          padding: 30px;
+          
         }
       }
     }
@@ -114,6 +114,7 @@
         textarea{
           width: 250px;
           min-height: 200px;
+          
         }
 
         button{
@@ -156,6 +157,7 @@
         textarea{
           width: 250px;
           min-height: 70px;
+          
         }
       }
     }
