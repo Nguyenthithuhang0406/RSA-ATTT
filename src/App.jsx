@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { RSA, ComputeMd5Hash } from './rsa';
 
 import "./App.scss"
+import FileUploader from './FileUploader';
 const App = () => {
   const [rsa] = useState(new RSA());
   const [textToSign, setTextToSign] = useState('');
@@ -27,7 +28,7 @@ const App = () => {
     setVerificationText(textToSign);
     setVerificationSignature(signature);
     setVerificationResult(hashFunction);
-    
+
   }
 
   const handleVerify = () => {
@@ -46,7 +47,9 @@ const App = () => {
             <div className='group'>
               <p>Văn bản ký</p>
               <textarea value={textToSign} onChange={(e) => setTextToSign(e.target.value)} />
-              <button >File</button>
+              <FileUploader title='File' onFileChange={(uploadContent) => {
+                setTextToSign(uploadContent);
+              }} />
             </div>
 
             <div className='bt-sign'>
@@ -75,7 +78,9 @@ const App = () => {
             <div className='group'>
               <p>Văn bản ký</p>
               <textarea value={verificationText} onChange={(e) => setVerificationText(e.target.value)} />
-              <button>File văn bản</button>
+              <FileUploader title='File văn bản' onFileChange={(uploadContent) => {
+                setVerificationText(uploadContent);
+              }} />
             </div>
 
             <div className='bt-sign'>
@@ -84,7 +89,9 @@ const App = () => {
             <div className='group'>
               <p>Chữ ký</p>
               <textarea value={verificationSignature} onChange={(e) => setVerificationSignature(e.target.value)} />
-              <button>File chữ ký</button>
+              <FileUploader title='File chữ ký' onFileChange={(uploadContent) => {
+                setVerificationSignature(uploadContent);
+              }} />
             </div>
 
             <div className='gr-hashFunction'>
